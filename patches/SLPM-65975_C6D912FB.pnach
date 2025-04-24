@@ -1,0 +1,109 @@
+gametitle=WRC 4 Japan 2.00 [SLPM 65975] (NTSC-J)
+
+[English language]
+author=github.com/igorciz777
+description=Changes default from Japanese to English
+
+// disable set Japanese language function
+patch=1,EE,0042EC50,word,00000000
+
+
+[Debug Menu]
+author=github.com/igorciz777
+description=Enables debug menu
+
+// enable debug menu in runtimeconfig settings
+patch=1,EE,0055cdc0,extended,1
+
+[Improved FFB]
+author=github.com/igorciz777
+description=Attempt at improving FFB, tested on T300RS
+
+// check if encrypted
+patch=1,EE,D044A484,extended,03010063
+// disable steer damping control helper
+patch=1,EE,204297c4,extended,24080000
+// disable steering deadzone
+patch=1,EE,001A92D0,extended,7
+// lower vibration multiplier
+patch=1,EE,10236e1c,extended,4200
+
+
+[Remove Distance Blur]
+author=github.com/igorciz777
+description=Removes blur applied to distant objects
+
+// check if encrypted
+patch=1,EE,D044A484,extended,06010063
+// remove distance blur from interior cameras
+patch=1,EE,2011b888,extended,00000000
+patch=1,EE,2011b8b8,extended,00000000
+patch=1,EE,2011b8e8,extended,00000000
+// remove distance blur from exterior cameras
+patch=1,EE,2011bd6c,extended,00000000
+patch=1,EE,2011bd9c,extended,00000000
+patch=1,EE,2011bdcc,extended,00000000
+
+
+[Disable Dynamic Draw Distance]
+author=github.com/igorciz777, Agrippa (static draw distance address)
+description=Sets draw distance to static with custom settings, performance boost
+
+// check if encrypted
+patch=1,EE,D044A484,extended,05010063
+// disable dynamic draw distance
+//  0 - static
+//  1 - dynamic
+//  2 - very large
+patch=1,EE,0044b4e8,extended,0
+// set map draw distance to 2000
+patch=1,EE,1044B538,extended,07D0
+// set object draw distance to 1500
+patch=1,EE,1044B578,extended,05DC
+// set track draw distance to 600 - this one is the biggest performance hitter
+patch=1,EE,1044B5B8,extended,0258
+// set landscape transition to 500 - needs to be around track draw dist otherwise there are holes in the landscape
+patch=1,EE,1044B5F8,extended,01F4
+
+
+[16:10]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// check if encrypted
+patch=1,EE,D044A484,extended,03010063
+// change 16:9 float value to 16:10
+patch=1,EE,20109874,extended,3c023f20
+patch=1,EE,20108f54,extended,3c033f20
+patch=1,EE,20109420,extended,3c023f20
+
+
+[21:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// check if encrypted
+patch=1,EE,D044A484,extended,04010063
+// change 16:9 float value to 21:9
+patch=1,EE,20109874,extended,3c023edb
+patch=1,EE,20108f54,extended,3c033edb
+patch=1,EE,20109420,extended,3c023edb
+// decrease interior camera fov to fix clipping
+patch=1,EE,2014A3A4,extended,3C023F30
+
+
+[32:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// check if encrypted
+patch=1,EE,D044A484,extended,04010063
+// change 16:9 float value to 32:9
+patch=1,EE,20109874,extended,3c023e90
+patch=1,EE,20108f54,extended,3C033e90
+patch=1,EE,20109420,extended,3C023e90
+// decrease interior camera fov to fix clipping
+patch=1,EE,2014A3A4,extended,3C023F20
