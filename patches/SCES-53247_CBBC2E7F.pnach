@@ -1,0 +1,125 @@
+gametitle=WRC Rally Evolved [SCES 53247] (PAL)
+
+[NTSC]
+author=github.com/igorciz777
+description=Enables leftover NTSC code (60fps patch), slightly crops the bottom of the screen
+
+// check if encrypted (earlier than normal check)
+patch=1,EE,D0100240,extended,01110000
+// switch appcore_c PAL/NTSC parameter from 0(PAL) to 1(NTSC)
+patch=1,EE,2010030c,extended,00a0402d
+// check if encrypted
+patch=1,EE,D04D9DC4,extended,02010063
+// change 512x420 to 512x480
+patch=1,EE,203064b0,extended,24050200
+patch=1,EE,203064b8,extended,24060200
+
+
+[Enable Debug Menu]
+author=github.com/igorciz777
+description=Enables the debug menu
+
+// check if encrypted
+patch=1,EE,D0100240,extended,02110000
+// skip runtimeconfig check
+patch=1,EE,2015c5ec,extended,00000000
+patch=1,EE,2015cd2c,extended,00000000
+
+
+[Disable Motion Blur]
+author=github.com/igorciz777
+description=Removes motion blur from screen effects option
+
+// check if encrypted
+patch=1,EE,D04D9DC4,extended,01010063
+// disable motion blur
+patch=1,EE,2011c9c0,extended,00000000
+
+
+[Improved FFB]
+author=github.com/igorciz777
+description=Attempt at improving FFB, tested on T300RS
+
+// check if encrypted
+patch=1,EE,D04D9DC4,extended,02010063 
+// lowers vibration multiplier
+patch=1,EE,20478b28,extended,42800000
+// turns on unused ffb const force logic
+// set global var 'ffb' value from 0.0 to 1.0
+patch=1,EE,2059e768,extended,3f800000 
+
+
+[Extend Draw Distance]
+author=github.com/igorciz777, Agrippa (static draw distance address)
+description=Sets draw distance to static with custom settings
+
+// check if encrypted
+patch=1,EE,D04D9DC4,extended,06010063 
+// set draw distance to static
+patch=1,EE,004cac34,extended,0
+// set map draw distance to 1500
+patch=1,EE,105b9e48,extended,05DC
+// set object draw distance to 1200
+patch=1,EE,105b9e88,extended,04B0
+// set track draw distance to 600
+patch=1,EE,105b9f08,extended,0258
+// set landscape transition to 500
+patch=1,EE,105b9f48,extended,01F4
+// set draw distance to 1800
+patch=1,EE,105b9f88,extended,0708
+
+
+[Always Draw 3D Crowd]
+author=github.com/igorciz777
+description=Always draws the crowds in 3D (might cause slowdowns)
+
+// check if encrypted
+patch=1,EE,D04D9DC4,extended,03010063
+// change all switch cases to 3d draw
+patch=1,EE,202e9ccc,extended,45000008
+patch=1,EE,202e9cd8,extended,45010005
+patch=1,EE,202e9ce8,extended,45000001
+
+
+[16:10]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+
+// check if encrypted
+patch=1,EE,D0100240,extended,03110000
+// change 16:9 float value to 16:10
+patch=1,EE,201089cc,extended,3c023f20
+patch=1,EE,2010927c,extended,3c023f20
+patch=1,EE,20107f74,extended,3c033f20
+
+
+[21:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// check if encrypted
+patch=1,EE,D0100240,extended,04110000
+// change 16:9 float value to 21:9
+patch=1,EE,201089cc,extended,3c023edb
+patch=1,EE,2010927c,extended,3c023edb
+patch=1,EE,20107f74,extended,3c033edb
+// decrease interior camera fov to fix clipping
+patch=1,EE,2014adb4,extended,3C023F30
+
+
+[32:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// check if encrypted
+patch=1,EE,D0100240,extended,04110000
+// change 16:9 float value to 32:9
+patch=1,EE,201089cc,extended,3c023e90
+patch=1,EE,2010927c,extended,3c023e90
+patch=1,EE,20107f74,extended,3c033e90
+// decrease interior camera fov to fix clipping
+patch=1,EE,2014adb4,extended,3C023f20

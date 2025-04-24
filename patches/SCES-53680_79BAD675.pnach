@@ -1,0 +1,113 @@
+gametitle=WRC avec Sebastien Loeb [SCES 53680] (PAL)
+
+[English language]
+author=github.com/igorciz777
+description=Switches forced French to English.
+
+// force English language
+patch=0,EE,0019cb74,word,64050000
+patch=0,EE,0019cba8,word,24050000
+
+
+[NTSC]
+author=github.com/igorciz777
+description=Enables leftover NTSC code (60fps patch), slightly crops the bottom of the screen
+
+// switch appcore_c PAL/NTSC parameter from 0(PAL) to 1(NTSC)
+patch=0,EE,0010030c,word,00a0402d
+// change 512x420 to 512x480
+patch=0,EE,0030bf60,word,24050200
+patch=0,EE,0030bf68,word,24060200
+
+
+[Enable Debug Menu]
+author=github.com/igorciz777
+description=Enables the debug menu
+
+// skip runtimeconfig check
+patch=0,EE,0015c46c,word,00000000
+patch=0,EE,0015cbac,word,00000000
+
+
+[Disable Motion Blur]
+author=github.com/igorciz777
+description=Removes motion blur from screen effects option
+
+// disable motion blur
+patch=0,EE,0011c730,word,00000000
+
+
+[Improved FFB]
+author=github.com/igorciz777
+description=Attempt at improving FFB, tested on T300RS
+
+// lowers vibration multiplier
+patch=0,EE,0047e6f8,word,42800000
+// turns on unused ffb const force logic
+// set global var 'ffb' value from 0.0 to 1.0
+patch=1,EE,005a4c18,word,3f800000 
+
+
+[Extend Draw Distance]
+author=github.com/igorciz777, Agrippa (static draw distance address)
+description=Sets draw distance to static with custom settings
+
+// set draw distance to static
+patch=0,EE,004d0e64,word,24080000
+// set map draw distance to 1500
+patch=1,EE,105c0308,extended,05DC
+// set object draw distance to 1200
+patch=1,EE,105c0348,extended,04B0
+// set track draw distance to 600
+patch=1,EE,105C03C8,extended,0258
+// set landscape transition to 500
+patch=1,EE,105C0408,extended,01F4
+// set draw distance to 1800
+patch=1,EE,105C0448,extended,0780
+
+
+[Always Draw 3D Crowd]
+author=github.com/igorciz777
+description=Always draws the crowds in 3D (might cause slowdowns)
+
+// change all switch cases to 3d draw
+patch=0,EE,002ef80c,word,45000008
+patch=0,EE,002ef818,word,45010005
+patch=0,EE,002ef828,word,45000001
+
+
+[16:10]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// change 16:9 float value to 16:10
+patch=0,EE,001089cc,word,3c023f20
+patch=0,EE,0010927c,word,3c023f20
+patch=0,EE,00107f74,word,3c033f20
+
+
+[21:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// change 16:9 float value to 21:9
+patch=0,EE,001089cc,word,3c023edb
+patch=0,EE,0010927c,word,3c023edb
+patch=0,EE,00107f74,word,3c033edb
+// decrease interior camera fov to fix clipping
+patch=1,EE,0014AB64,word,3C023F30
+
+
+[32:9]
+gsaspectratio=Stretch
+author=github.com/igorciz777
+description=Turn in-game widescreen off and on to see changes
+
+// change 16:9 float value to 32:9
+patch=0,EE,001089cc,word,3c023e90
+patch=0,EE,0010927c,word,3c023e90
+patch=0,EE,00107f74,word,3c033e90
+// decrease interior camera fov to fix clipping
+patch=1,EE,0014AB64,word,3C023f20
