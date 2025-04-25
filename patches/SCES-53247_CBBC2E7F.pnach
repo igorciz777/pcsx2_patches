@@ -59,8 +59,8 @@ patch=1,EE,D04D9DC4,extended,06010063
 patch=1,EE,004cac34,extended,0
 // set map draw distance to 1500
 patch=1,EE,105b9e48,extended,05DC
-// set object draw distance to 1200
-patch=1,EE,105b9e88,extended,04B0
+// set object draw distance to 800
+patch=1,EE,105b9e88,extended,0320
 // set track draw distance to 600
 patch=1,EE,105b9f08,extended,0258
 // set landscape transition to 500

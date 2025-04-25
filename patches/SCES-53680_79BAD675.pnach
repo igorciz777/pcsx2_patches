@@ -56,8 +56,8 @@ description=Sets draw distance to static with custom settings
 patch=0,EE,004d0e64,word,24080000
 // set map draw distance to 1500
 patch=1,EE,105c0308,extended,05DC
-// set object draw distance to 1200
-patch=1,EE,105c0348,extended,04B0
+// set object draw distance to 800
+patch=1,EE,105c0348,extended,0320
 // set track draw distance to 600
 patch=1,EE,105C03C8,extended,0258
 // set landscape transition to 500
