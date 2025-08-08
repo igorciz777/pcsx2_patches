@@ -1,0 +1,23 @@
+gametitle=WRC3 [SLPM 65583] (NTSC-J)
+
+[English Language]
+author=github.com/igorciz777
+description=Sets the language to English
+// 00 - English
+// 01 - French
+// 02 - Italian
+// 03 - German
+// 04 - Spanish
+// 05 - Portuguese
+// 06 - Finnish
+// 07 - Norwegian
+// 08 - Japanese (default)
+patch=1,EE,001D194C,extended,00
+patch=1,EE,001D1954,extended,00
+
+[Adjust Draw Distance]
+author=github.com/igorciz777
+description=Adjusts draw distance values to prevent slowdowns
+// Reduce road mesh draw distance
+patch=1,EE,20313fc0,extended,43700000
+patch=1,EE,20313fc8,extended,43700000

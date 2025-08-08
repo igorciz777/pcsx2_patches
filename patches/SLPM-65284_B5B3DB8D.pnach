@@ -1,0 +1,30 @@
+gametitle=WRCⅡ ～EXTREME～ [SLPM 65284] (NTSC-J)
+
+[English Language]
+author=github.com/igorciz777
+description=Sets the language to English
+// 00 - English
+// 01 - French
+// 02 - German
+// 03 - Spanish
+// 04 - Italian
+// 05 - Portuguese
+// 06 - Finnish
+// 07 - Japanese (default)
+patch=0,EE,00171e4c,extended,00
+patch=0,EE,00171e58,extended,00
+// Change _JP suffix to _GB
+patch=0,EE,0024ef70,word,2E42475F
+
+[Disable Distance Blur]
+author=github.com/igorciz777
+description=Disables distance blur effect while keeping the fog
+patch=0,EE,00189270,word,00000000
+patch=0,EE,00189298,word,00000000
+
+[Disable Fog and Distance Blur]
+author=github.com/igorciz777
+description=Disables fog and distance blur effects
+patch=0,EE,0018bb98,word,00000000
+patch=0,EE,0018bc08,word,00000000
+patch=0,EE,0018bc60,word,00000000

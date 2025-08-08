@@ -1,0 +1,8 @@
+gametitle=WRC 3 v1.01 [SCES 51684] (PAL)
+
+[Adjust Draw Distance]
+author=github.com/igorciz777
+description=Adjusts draw distance values to prevent slowdowns
+// Reduce road mesh draw distance
+patch=1,EE,203272D0,extended,43700000
+patch=1,EE,203272D8,extended,43e10000

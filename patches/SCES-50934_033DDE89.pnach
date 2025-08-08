@@ -1,0 +1,14 @@
+gametitle=WRC II Extreme [SCES 50934] (PAL)
+
+[Disable Distance Blur]
+author=github.com/igorciz777
+description=Disables distance blur effect while keeping the fog
+patch=1,EE,0018ebf0,word,00000000
+patch=1,EE,0018ec18,word,00000000
+
+[Disable Fog and Distance Blur]
+author=github.com/igorciz777
+description=Disables fog and distance blur effects
+patch=1,EE,00191e10,word,00000000
+patch=1,EE,00191e80,word,00000000
+patch=1,EE,00191ed8,word,00000000
